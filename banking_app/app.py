@@ -142,9 +142,6 @@ def create_app():
     csrf.exempt(argus_bp)
     csrf.exempt(admin_bp)
 
-    #print(app.url_map)
-
-
     @app.context_processor
     def inject_is_admin():
         from flask_login import current_user
@@ -153,11 +150,7 @@ def create_app():
             return {"is_admin": user_has_role(current_user.id, "Admin")}
         return {"is_admin": False}
 
-
     return app
-
-
-#app = create_app()
 
 
 if __name__ == "__main__":
